@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--reference to bootstrap api-->
+        <link rel="stylesheet" href="assets/bootstrap.min.css"/>
+        <link rel="stylesheet" href="assets/angular-material.min.css" >
+        <link rel="stylesheet" href="assets/angular-ui-tree.min.css" >
+
+        <!--custom style-->
+        <link rel="stylesheet" href="css/style.css" >
+
+    </head>
+
+    <body>
+
+        <!--app container-->
+        <div ng-app="t2gb">
+            
+            <div ng-controller="MenuController as menuCtrl" ng-cloak>
+                
+                <section layout="row" flex="">
+                    
+                    <!--side bar-->
+                    <md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
+                        <md-toolbar class="md-theme-indigo">
+                            <h1 class="md-toolbar-tools">Cadastros</h1>
+                        </md-toolbar>
+    
+                        <md-menu-item>
+                            <md-button ng-click="menuCtrl.setTemplateURL('app/modelo/panel-template.html')">Modelos</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="menuCtrl.setTemplateURL('app/nivel_maturidade/panel-template.html')">Níveis de Maturidade</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="menuCtrl.setTemplateURL('app/categoria/panel-template.html')">Categorias</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="menuCtrl.setTemplateURL('app/nivel_capacidade/panel-template.html')">Niveis de Capacidades</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="menuCtrl.setTemplateURL('app/meta_generica/panel-template.html')">Metas Genéricas</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="menuCtrl.setTemplateURL('app/area_processo/panel-template.html')">Áreas de Processo</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="menuCtrl.setTemplateURL('app/meta_especifica/panel-template.html')">Metas Específicas</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="menuCtrl.setTemplateURL('app/pratica_especifica/panel-template.html')">Práticas Específicas</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="menuCtrl.setTemplateURL('app/produto_trabalho/panel-template.html')">Produtos de Trabalho</md-button>
+                        </md-menu-item>
+   
+                    </md-sidenav>
+                    
+                    <!--toolbar-->
+                    <div layout="column" flex>
+                        <md-toolbar class="md-hue-2">
+                            <div class="md-toolbar-tools">
+                                <a class="navbar-brand" ng-click="menuCtrl.toggleLeft()()"> 
+                                    <span class="glyphicon glyphicon-menu-hamburger"></span>
+                                </a> 
+                                <span flex></span>
+                                <h3>Modelos de Melhoria de Processo de Software</h3>       
+                            </div>
+                        </md-toolbar>
+                        
+                        <br/>
+                        
+                        <!--body-->
+                        <div class = "container">
+                           <div ng-include="menuCtrl.templateURL"></div>
+                        </div> 
+                    </div>
+                </section>
+            </div>
+        </div>
+
+
+        <!--reference to angular api-->
+        <script type="text/javascript" src="assets/angular.min.js"></script>
+        <!--<script type="text/javascript" src="assets/ui-bootstrap-tpls-2.5.0.min.js"></script>-->
+
+        <!--bootstrap/jquery-->
+        <script src="assets/jquery-3.2.1.min.js"></script>
+        <script src="assets/tether.min.js"></script>
+        <script src="assets/bootstrap.min.js"></script>
+
+        <!--angular material-->
+        <script type="text/javascript" src="assets/angular-animate.min.js"></script>
+        <script type="text/javascript" src="assets/angular-aria.min.js"></script>  
+        <script type="text/javascript" src="assets/angular-messages.min.js"></script>
+        <script type="text/javascript" src="assets/angular-material.min.js"></script>
+        <script type="text/javascript" src="assets/ng-file-upload-all.min.js"></script>
+        <script type="text/javascript" src="assets/angular-ui-tree.min.js"></script>
+
+        <!--custom script-->
+        <script type "text/javascript" src="app/app.js"></script>
+        <script type "text/javascript" src="app/modelo/modelo.js"></script>
+        <script type "text/javascript" src="app/area_processo/area_processo.js"></script>
+        <script type "text/javascript" src="app/nivel_maturidade/nivel_maturidade.js"></script>
+        <script type "text/javascript" src="app/categoria/categoria.js"></script>
+        <script type "text/javascript" src="app/nivel_capacidade/nivel_capacidade.js"></script>
+        <script type "text/javascript" src="app/meta_especifica/meta_especifica.js"></script>
+        <script type "text/javascript" src="app/meta_generica/meta_generica.js"></script>
+        <script type "text/javascript" src="app/pratica_especifica/pratica_especifica.js"></script>
+        <script type "text/javascript" src="app/produto_trabalho/produto_trabalho.js"></script>
+    </body>
+</html>

@@ -1,0 +1,55 @@
+<html>    
+    <div ng-controller = "ProdutoTrabalhoController as produtoTrabalhoCtrl">
+        <div id="top" layout="row" >
+
+            <div flex="20" layout = "column">
+                <div class="md-toolbar-tools">
+                    <h3 class="md-headline">Produtos de Trabalho</h3>
+                </div>
+            </div>
+
+            <div flex="70" layout = "column" >
+                <md-input-container class="md-block m-b-0px">
+                    <form ng-submit="produtoTrabalhoCtrl.search(produtoTrabalhoCtrl.searchKeywords)">
+                        <label>Pesquisar produto de trabalho...</label>
+                        <input ng-model="produtoTrabalhoCtrl.searchKeywords">
+                    </form>
+                </md-input-container>
+            </div>
+
+            <div layout = "column">
+                <md-button class="md-primary md-raised" ng-click="produtoTrabalhoCtrl.showCreateForm()">Novo</md-button>
+            </div>
+        </div>
+
+        <div id="list" class="row">
+
+            <div class="table-responsive col-md-12">
+
+                <table ng-init = "produtoTrabalhoCtrl.read()" class="table table-striped" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Template</th>
+                            <th class="actions">Ações</th>
+                         </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="produtoTrabalho in produtoTrabalhoCtrl.produtosTrabalho">
+                            <td width="5%">{{produtoTrabalho.id_produto_trabalho}}</td>
+                            <td width="30%">{{produtoTrabalho.nome}}</td>
+                            <td width="45%">{{produtoTrabalho.descricao}}</td>
+                            <td width="15%">{{produtoTrabalho.template}}</td>
+                            <td width="5%"class="actions">
+                                <a class="btn btn-danger btn-xs" ng-click="produtoTrabalhoCtrl.confirmDelete($event,produtoTrabalho.id_produto_trabalho)">Excluir</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                 </table>
+
+             </div>
+        </div>
+    </div>
+</html>

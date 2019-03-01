@@ -1,0 +1,62 @@
+<html>    
+    <div ng-controller = "AreaProcessoController as areaProcessoCtrl">
+        <div id="top" layout="row" >
+
+            <div flex="20" layout = "column">
+                <div class="md-toolbar-tools">
+                    <h3 class="md-headline">Áreas de Processo</h3>
+                </div>
+            </div>
+
+            <div flex="70" layout = "column" >
+                <md-input-container class="md-block m-b-0px">
+                    <form ng-submit="areaProcessoCtrl.search(areaProcessoCtrl.searchKeywords)">
+                        <label>Pesquisar área de processo...</label>
+                        <input ng-model="areaProcessoCtrl.searchKeywords">
+                    </form>
+                </md-input-container>
+            </div>
+
+            <div layout = "column">
+                <md-button class="md-primary md-raised" ng-click="areaProcessoCtrl.showCreateForm()">Novo</md-button>
+            </div>
+        </div>
+
+        <div id="list" class="row">
+
+            <div class="table-responsive col-md-12">
+
+                <table ng-init = "areaProcessoCtrl.read()" class="table table-striped" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Sigla</th>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Nível de Maturidade</th>
+                            <th>Categoria</th>
+                            <th>Modelo</th>
+                            <th class="actions">Ações</th>
+                         </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="areaProcesso in areaProcessoCtrl.areasProcesso">
+                            <td width="5%">{{areaProcesso.id_area_processo}}</td>
+                            <td width="5%">{{areaProcesso.sigla}}</td>
+                            <td width="25%">{{areaProcesso.nome}}</td>
+                            <td width="30%">{{areaProcesso.descricao}}</td>
+                            <td width="5%">{{areaProcesso.id_nivel_maturidade}}</td>
+                            <td width="5%">{{areaProcesso.id_categoria}}</td>
+                            <td width="5%">{{areaProcesso.id_modelo}}</td>
+                            <td width="10%"class="actions">
+                                <a class="btn btn-warning btn-xs" ng-click="areaProcessoCtrl.showUpdateForm($event,areaProcesso.id_area_processo)">Editar</a>
+                                <a class="btn btn-danger btn-xs" ng-click="areaProcessoCtrl.confirmDelete($event,areaProcesso.id_area_processo)">Excluir</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                 </table>
+
+             </div>
+        </div>
+    </div>
+</html>

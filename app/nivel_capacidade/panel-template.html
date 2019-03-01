@@ -1,0 +1,58 @@
+<html>    
+    <div ng-controller = "NivelCapacidadeController as nivelCapacidadeCtrl">
+        <div id="top" layout="row" >
+
+            <div flex="20" layout = "column">
+                <div class="md-toolbar-tools">
+                    <h3 class="md-headline">Níveis de Capacidade</h3>
+                </div>
+            </div>
+
+            <div flex="70" layout = "column" >
+                <md-input-container class="md-block m-b-0px">
+                    <form ng-submit="nivelCapacidadeCtrl.search(nivelCapacidadeCtrl.searchKeywords)">
+                        <label>Pesquisar nível de capacidade...</label>
+                        <input ng-model="nivelCapacidadeCtrl.searchKeywords">
+                    </form>
+                </md-input-container>
+            </div>
+
+            <div layout = "column">
+                <md-button class="md-primary md-raised" ng-click="nivelCapacidadeCtrl.showCreateForm()">Novo</md-button>
+            </div>
+        </div>
+
+        <div id="list" class="row">
+
+            <div class="table-responsive col-md-12">
+
+                <table ng-init = "nivelCapacidadeCtrl.read()" class="table table-striped" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Sigla</th>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Modelo</th>
+                            <th class="actions">Ações</th>
+                         </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="nivelCapacidade in nivelCapacidadeCtrl.niveisCapacidade">
+                            <td width="5%">{{nivelCapacidade.id_nivel_capacidade}}</td>
+                            <td width="5%">{{nivelCapacidade.sigla}}</td>
+                            <td width="30%">{{nivelCapacidade.nome}}</td>
+                            <td width="45%">{{nivelCapacidade.descricao}}</td>
+                            <td width="5%">{{nivelCapacidade.id_modelo}}</td>
+                            <td width="10%"class="actions">
+                                <a class="btn btn-warning btn-xs" ng-click="nivelCapacidadeCtrl.showUpdateForm($event,nivelCapacidade.id_nivel_capacidade)">Editar</a>
+                                <a class="btn btn-danger btn-xs" ng-click="nivelCapacidadeCtrl.confirmDelete($event,nivelCapacidade.id_nivel_capacidade)">Excluir</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                 </table>
+
+             </div>
+        </div>
+    </div>
+</html>

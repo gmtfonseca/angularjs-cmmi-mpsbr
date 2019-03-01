@@ -1,0 +1,58 @@
+<html>    
+    <div ng-controller = "NivelMaturidadeController as nivelMaturidadeCtrl">
+        <div id="top" layout="row" >
+
+            <div flex="20" layout = "column">
+                <div class="md-toolbar-tools">
+                    <h3 class="md-headline">Níveis de Maturidade</h3>
+                </div>
+            </div>
+
+            <div flex="70" layout = "column" >
+                <md-input-container class="md-block m-b-0px">
+                    <form ng-submit="nivelMaturidadeCtrl.search(nivelMaturidadeCtrl.searchKeywords)">
+                        <label>Pesquisar nível de maturidade...</label>
+                        <input ng-model="nivelMaturidadeCtrl.searchKeywords">
+                    </form>
+                </md-input-container>
+            </div>
+
+            <div layout = "column">
+                <md-button class="md-primary md-raised" ng-click="nivelMaturidadeCtrl.showCreateForm()">Novo</md-button>
+            </div>
+        </div>
+
+        <div id="list" class="row">
+
+            <div class="table-responsive col-md-12">
+
+                <table ng-init = "nivelMaturidadeCtrl.read()" class="table table-striped" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Sigla</th>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Modelo</th>
+                            <th class="actions">Ações</th>
+                         </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="nivelMaturidade in nivelMaturidadeCtrl.niveisMaturidade">
+                            <td width="5%">{{nivelMaturidade.id_nivel_maturidade}}</td>
+                            <td width="5%">{{nivelMaturidade.sigla}}</td>
+                            <td width="35%">{{nivelMaturidade.nome}}</td>
+                            <td width="40%">{{nivelMaturidade.descricao}}</td>
+                            <td width="5%">{{nivelMaturidade.id_modelo}}</td>
+                            <td width="10%"class="actions">
+                                <a class="btn btn-warning btn-xs" ng-click="nivelMaturidadeCtrl.showUpdateForm($event,nivelMaturidade.id_nivel_maturidade)">Editar</a>
+                                <a class="btn btn-danger btn-xs" ng-click="nivelMaturidadeCtrl.confirmDelete($event,nivelMaturidade.id_nivel_maturidade)">Excluir</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                 </table>
+
+             </div>
+        </div>
+    </div>
+</html>

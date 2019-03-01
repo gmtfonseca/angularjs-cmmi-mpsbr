@@ -1,0 +1,54 @@
+<html>    
+    <div ng-controller = "CategoriaController as categoriaCtrl">
+        <div id="top" layout="row" >
+
+            <div flex="20" layout = "column">
+                <div class="md-toolbar-tools">
+                    <h3 class="md-headline">Categorias</h3>
+                </div>
+            </div>
+
+            <div flex="70" layout = "column" >
+                <md-input-container class="md-block m-b-0px">
+                    <form ng-submit="categoriaCtrl.search(categoriaCtrl.searchKeywords)">
+                        <label>Pesquisar categoria...</label>
+                        <input ng-model="categoriaCtrl.searchKeywords">
+                    </form>
+                </md-input-container>
+            </div>
+
+            <div layout = "column">
+                <md-button class="md-primary md-raised" ng-click="categoriaCtrl.showCreateForm()">Novo</md-button>
+            </div>
+        </div>
+
+        <div id="list" class="row">
+
+            <div class="table-responsive col-md-12">
+
+                <table ng-init = "categoriaCtrl.read()" class="table table-striped" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Modelo</th>
+                            <th class="actions">Ações</th>
+                         </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="categoria in categoriaCtrl.categorias">
+                            <td width="5%">{{categoria.id_categoria}}</td>
+                            <td width="80%">{{categoria.nome}}</td>
+                            <td width="5%">{{categoria.id_modelo}}</td>
+                            <td width="10%"class="actions">
+                                <a class="btn btn-warning btn-xs" ng-click="categoriaCtrl.showUpdateForm($event,categoria.id_categoria)">Editar</a>
+                                <a class="btn btn-danger btn-xs" ng-click="categoriaCtrl.confirmDelete($event,categoria.id_categoria)">Excluir</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                 </table>
+
+             </div>
+        </div>
+    </div>
+</html>

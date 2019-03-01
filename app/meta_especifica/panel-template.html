@@ -1,0 +1,58 @@
+<html>    
+    <div ng-controller = "MetaEspecificaController as metaEspecificaCtrl">
+        <div id="top" layout="row" >
+
+            <div flex="20" layout = "column">
+                <div class="md-toolbar-tools">
+                    <h3 class="md-headline">Metas Específicas</h3>
+                </div>
+            </div>
+
+            <div flex="70" layout = "column" >
+                <md-input-container class="md-block m-b-0px">
+                    <form ng-submit="metaEspecificaCtrl.search(metaEspecificaCtrl.searchKeywords)">
+                        <label>Pesquisar meta específica...</label>
+                        <input ng-model="metaEspecificaCtrl.searchKeywords">
+                    </form>
+                </md-input-container>
+            </div>
+
+            <div layout = "column">
+                <md-button class="md-primary md-raised" ng-click="metaEspecificaCtrl.showCreateForm()">Novo</md-button>
+            </div>
+        </div>
+
+        <div id="list" class="row">
+
+            <div class="table-responsive col-md-12">
+
+                <table ng-init = "metaEspecificaCtrl.read()" class="table table-striped" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Sigla</th>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Área de Processo</th>
+                            <th class="actions">Ações</th>
+                         </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="metaEspecifica in metaEspecificaCtrl.metasEspecificas">
+                            <td width="5%">{{metaEspecifica.id_meta_especifica}}</td>
+                            <td width="5%">{{metaEspecifica.sigla}}</td>
+                            <td width="30%">{{metaEspecifica.nome}}</td>
+                            <td width="45%">{{metaEspecifica.descricao}}</td>
+                            <td width="5%">{{metaEspecifica.id_area_processo}}</td>
+                            <td width="10%"class="actions">
+                                <a class="btn btn-warning btn-xs" ng-click="metaEspecificaCtrl.showUpdateForm($event,metaEspecifica.id_meta_especifica)">Editar</a>
+                                <a class="btn btn-danger btn-xs" ng-click="metaEspecificaCtrl.confirmDelete($event,metaEspecifica.id_meta_especifica)">Excluir</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                 </table>
+
+             </div>
+        </div>
+    </div>
+</html>

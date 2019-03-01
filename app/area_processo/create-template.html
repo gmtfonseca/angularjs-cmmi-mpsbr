@@ -1,0 +1,65 @@
+<md-dialog flex="45">
+    <form ng-cloak>
+         
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Criar Área de Processo</h2>
+            </div>
+        </md-toolbar>
+ 
+        <md-dialog-content>
+            <div class="md-dialog-content">
+
+                <md-input-container class="md-block">
+                    <label>Sigla</label>
+                    <input ng-model="createCtrl.sigla">
+                </md-input-container>
+ 
+                <md-input-container class="md-block">
+                    <label>Nome</label>
+                    <input ng-model="createCtrl.nome">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Descrição</label>
+                    <input ng-model="createCtrl.descricao">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Nível de Maturidade</label>
+                    <div ng-controller="NivelMaturidadeController as nivelMaturidadeCtrl">
+                        <md-select  ng-init = "nivelMaturidadeCtrl.read()" ng-model="createCtrl.nivelMaturidade" placeholder="Nível de Maturidade">
+                            <div ng-repeat="nivelMaturidade in nivelMaturidadeCtrl.niveisMaturidade">
+                                <md-option ng-value="nivelMaturidade.id_nivel_maturidade" >{{nivelMaturidade.sigla}} - {{nivelMaturidade.nome}}</md-option>
+                            </div>    
+                        </md-select> 
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Categoria</label>
+                    <div ng-controller="CategoriaController as categoriaCtrl">
+                        <md-select ng-init = "categoriaCtrl.read()" ng-model="createCtrl.categoria" placeholder="Categoria">
+                            <div ng-repeat="categoria in categoriaCtrl.categorias">
+                                <md-option ng-value="categoria.id_categoria" >{{categoria.nome}}</md-option>
+                            </div>    
+                        </md-select> 
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Modelo</label>
+                    <div ng-controller="ModeloController as modeloCtrl">
+                        <md-select  ng-init = "modeloCtrl.read()" ng-model="createCtrl.modelo" placeholder="Modelo">
+                            <div ng-repeat="modelo in modeloCtrl.modelos">
+                                <md-option ng-value="modelo.id_modelo" >{{modelo.sigla}} - {{modelo.nome}}</md-option>
+                            </div>    
+                        </md-select> 
+                    </div>
+                </md-input-container>
+ 
+            </div>
+        </md-dialog-content>
+ 
+        <md-dialog-actions layout="row">     
+            <md-button ng-click="createCtrl.create()" class="md-primary">Salvar</md-button>
+            <md-button ng-click="createCtrl.cancel()">Cancelar</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

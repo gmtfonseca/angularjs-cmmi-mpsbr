@@ -1,0 +1,64 @@
+.form-control-sigla {
+    min-width: 0;
+    width: auto;
+    display: inline;
+}
+
+md-input-container{ width:90%; }
+
+md-dialog{ width:50%;}
+md-content{background-color: #ffffff;}
+
+
+
+.m-20px-0{ margin:20px 0; }
+.m-b-20px{ margin-bottom:20px; }
+.m-b-0px{ margin-bottom:0px; }
+.md-info{ background-color:#2196F3 !important; color:#ffffff !important; }
+.md-danger{ background-color:#D32F2F !important; color:#ffffff !important; }
+.w-5-pct{ width:5%; }
+.w-10-pct{ width:10%; }
+.w-20-pct{ width:20%; }
+.w-30-pct{ width:30%; }
+.w-35-pct{ width:35%; }
+.w-40-pct{ width:40%; }
+.w-50-pct{ width:50%; }
+.w-60-pct{ width:60%; }
+.w-70-pct{ width:70%; }
+.w-80-pct{ width:80%; }
+.w-90-pct{ width:90%; }
+.w-100-pct{ width:100%; }
+.t-a-c{ text-align:center; }
+.t-a-l{ text-align:left; }
+.margin-bottom-1em{ margin-bottom:1em; }
+
+
+.angular-ui-tree-handle {
+    background: #f8faff;
+    border: 1px solid #dae2ea;
+    color: #7c9eb2;
+    padding: 10px 10px;
+}
+
+.angular-ui-tree-handle:hover {
+    color: #438eb9;
+    background: #f4f6f7;
+    border-color: #dce2e8;
+}
+
+/* --- Tree --- */
+.tree-node {
+    border: 1px solid #dae2ea;
+    background: #f8faff;
+    color: #7c9eb2;
+}
+
+.tree-node-content {
+    margin: 10px;
+}
+.tree-handle {
+    padding: 10px;
+    background: #428bca;
+    color: #FFF;
+    margin-right: 10px;
+}

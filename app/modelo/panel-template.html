@@ -1,0 +1,57 @@
+<html>    
+    <div ng-controller = "ModeloController as modeloCtrl">
+        <div id="top" layout="row" >
+
+            <div flex="20" layout = "column">
+                <div class="md-toolbar-tools">
+                    <h3 class="md-headline">Modelos</h3>
+                </div>
+            </div>
+
+            <div flex="70" layout = "column" >
+                <md-input-container class="md-block m-b-0px">
+                    <form ng-submit="modeloCtrl.search(modeloCtrl.searchKeywords)">
+                        <label>Pesquisar modelo...</label>
+                        <input ng-model="modeloCtrl.searchKeywords">
+                    </form>
+                </md-input-container>
+            </div>
+
+            <div layout = "column">
+                <md-button class="md-primary md-raised" ng-click="modeloCtrl.showCreateForm()">Novo</md-button>
+            </div>
+        </div>
+
+        <div id="list" class="row">
+
+            <div class="table-responsive col-md-12">
+
+                <table ng-init = "modeloCtrl.read()" class="table table-striped" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Sigla</th>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th class="actions">Ações</th>
+                         </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="modelo in modeloCtrl.modelos">
+                            <td width="5%">{{modelo.id_modelo}}</td>
+                            <td width="5%">{{modelo.sigla}}</td>
+                            <td width="30%">{{modelo.nome}}</td>
+                            <td width="42%">{{modelo.descricao}}</td>
+                            <td width="17%"class="actions">
+                                <a class="btn btn-success btn-xs" ng-click="modeloCtrl.showViewForm($event,modelo.id_modelo)">Visualizar</a>
+                                <a class="btn btn-warning btn-xs" ng-click="modeloCtrl.showUpdateForm($event,modelo.id_modelo)">Editar</a>
+                                <a class="btn btn-danger btn-xs" ng-click="modeloCtrl.confirmDelete($event,modelo.id_modelo)">Excluir</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                 </table>
+
+             </div>
+        </div>
+    </div>
+</html>

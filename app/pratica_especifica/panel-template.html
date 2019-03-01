@@ -1,0 +1,58 @@
+<html>    
+    <div ng-controller = "PraticaEspecificaController as praticaEspecificaCtrl">
+        <div id="top" layout="row" >
+
+            <div flex="20" layout = "column">
+                <div class="md-toolbar-tools">
+                    <h3 class="md-headline">Práticas Específicas</h3>
+                </div>
+            </div>
+
+            <div flex="70" layout = "column" >
+                <md-input-container class="md-block m-b-0px">
+                    <form ng-submit="praticaEspecificaCtrl.search(praticaEspecificaCtrl.searchKeywords)">
+                        <label>Pesquisar prática específica...</label>
+                        <input ng-model="praticaEspecificaCtrl.searchKeywords">
+                    </form>
+                </md-input-container>
+            </div>
+
+            <div layout = "column">
+                <md-button class="md-primary md-raised" ng-click="praticaEspecificaCtrl.showCreateForm()">Novo</md-button>
+            </div>
+        </div>
+
+        <div id="list" class="row">
+
+            <div class="table-responsive col-md-12">
+
+                <table ng-init = "praticaEspecificaCtrl.read()" class="table table-striped" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Sigla</th>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Meta Específica</th>
+                            <th class="actions">Ações</th>
+                         </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="praticaEspecifica in praticaEspecificaCtrl.praticasEspecificas">
+                            <td width="5%">{{praticaEspecifica.id_pratica_especifica}}</td>
+                            <td width="5%">{{praticaEspecifica.sigla}}</td>
+                            <td width="30%">{{praticaEspecifica.nome}}</td>
+                            <td width="45%">{{praticaEspecifica.descricao}}</td>
+                            <td width="5%">{{praticaEspecifica.id_meta_especifica}}</td>
+                            <td width="10%"class="actions">
+                                <a class="btn btn-warning btn-xs" ng-click="praticaEspecificaCtrl.showUpdateForm($event,praticaEspecifica.id_pratica_especifica)">Editar</a>
+                                <a class="btn btn-danger btn-xs" ng-click="praticaEspecificaCtrl.confirmDelete($event,praticaEspecifica.id_pratica_especifica)">Excluir</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                 </table>
+
+             </div>
+        </div>
+    </div>
+</html>

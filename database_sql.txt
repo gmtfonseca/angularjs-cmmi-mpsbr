@@ -1,0 +1,95 @@
+CREATE TABLE metas_genericas (
+    id_meta_generica int NOT NULL AUTO_INCREMENT,
+    sigla varchar(10),
+    nome varchar(60) NOT NULL,
+    descricao varchar(500),
+    id_modelo INT,
+    id_nivel_capacidade INT,
+    PRIMARY KEY (id_meta_generica),
+    FOREIGN KEY (id_modelo) REFERENCES modelos(id_modelo),
+    FOREIGN KEY (id_nivel_capacidade) REFERENCES niveis_capacidade(id_nivel_capacidade)
+);
+
+CREATE TABLE niveis_capacidade (
+    id_nivel_capacidade int NOT NULL AUTO_INCREMENT,
+    sigla varchar(10),
+    nome varchar(60) NOT NULL,
+    descricao varchar(500),
+    id_modelo INT NOT NULL,
+    FOREIGN KEY (id_modelo) REFERENCES modelos(id_modelo),
+    PRIMARY KEY (id_nivel_capacidade)
+);
+
+CREATE TABLE modelos (
+    id_modelo int NOT NULL AUTO_INCREMENT,
+    sigla varchar(10),
+    nome varchar(60) NOT NULL,
+    descricao varchar(500),
+    PRIMARY KEY (id_modelo)
+);
+
+CREATE TABLE niveis_maturidade (
+    id_nivel_maturidade int NOT NULL AUTO_INCREMENT,
+    sigla varchar(10),
+    nome varchar(60) NOT NULL,
+    descricao varchar(500),
+    id_modelo INT,
+    FOREIGN KEY (id_modelo) REFERENCES modelos(id_modelo),
+    PRIMARY KEY (id_nivel_maturidade)
+);
+
+CREATE TABLE areas_processo (
+    id_area_processo int NOT NULL AUTO_INCREMENT,
+    sigla varchar(10),
+    nome varchar(60) NOT NULL,
+    descricao varchar(500),
+    id_nivel_maturidade int,
+    id_categoria int,
+    id_modelo int,
+    PRIMARY KEY (id_area_processo),
+    FOREIGN KEY (id_nivel_maturidade) REFERENCES niveis_maturidade(id_nivel_maturidade),
+    FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria),
+    FOREIGN KEY (id_modelo) REFERENCES modelos(id_modelo)
+);
+
+CREATE TABLE categorias (
+    id_categoria int NOT NULL AUTO_INCREMENT,
+    nome varchar(60) NOT NULL,
+    id_modelo INT,
+    PRIMARY KEY (id_categoria),
+    FOREIGN KEY (id_modelo) REFERENCES modelos(id_modelo)
+);
+
+CREATE TABLE metas_especificas (
+    id_meta_especifica int NOT NULL AUTO_INCREMENT,
+    sigla varchar(10),
+    nome varchar(60) NOT NULL,
+    descricao varchar(500),
+    id_area_processo INT,
+    PRIMARY KEY (id_meta_especifica),
+    FOREIGN KEY (id_area_processo) REFERENCES areas_processo(id_area_processo)
+);
+
+CREATE TABLE praticas_especificas (
+    id_pratica_especifica int NOT NULL AUTO_INCREMENT,
+    sigla varchar(10),
+    nome varchar(60) NOT NULL,
+    descricao varchar(500),
+    id_meta_especifica INT,
+    PRIMARY KEY (id_pratica_especifica),
+    FOREIGN KEY (id_meta_especifica) REFERENCES metas_especificas(id_meta_especifica)
+);
+
+CREATE TABLE produtos_trabalho (
+id_produto_trabalho int NOT NULL AUTO_INCREMENT, 
+nome varchar(60) NOT NULL, 
+descricao varchar(500) NOT NULL,
+template varchar(100),
+PRIMARY KEY (id_produto_trabalho) )
+
+
+CREATE TABLE produtos_praticas (
+    FOREIGN KEY (id_produto_trabalho) REFERENCES produtos_trabalho(id_produto_trabalho),
+    FOREIGN KEY (id_pratica_especifica) REFERENCES praticas_especificas(id_pratica_especifica),
+    PRIMARY KEY (id_produto_trabalho,id_pratica_especifica)
+);
